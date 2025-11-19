@@ -1,7 +1,7 @@
 # Architettura Ibrida FPGA/MCU per Retro Computer 8-bit
 
-## Tesi Sperimentale - Ingegneria Industriale
-**Autore:** Angelo  
+## Tesi Sperimentale - Ingegneria Gestionale - Mat. Informatica
+**Autore:** Arato Angelo  
 **Anno:** 2025/2026
 
 ## Descrizione
