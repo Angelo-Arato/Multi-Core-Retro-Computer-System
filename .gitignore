@@ -1,0 +1,123 @@
+# ============================================
+# RETRO MULTICORE PROJECT - .gitignore
+# ============================================
+
+# ============================================
+# FPGA - Quartus Files
+# ============================================
+# Build outputs
+db/
+incremental_db/
+output_files/*.rpt
+output_files/*.summary
+output_files/*.done
+output_files/*.smsg
+*.rpt
+*.summary
+*.done
+*.smsg
+
+# Quartus temporary files
+*.jdi
+*.pin
+*.qws
+*.bak
+c5_pin_model_dump.txt
+greybox_tmp/
+hc_output/
+dse1/
+
+# Simulation
+simulation/modelsim/
+simulation/work/
+vsim.wlf
+transcript
+*.vcd
+
+# Keep generated bitstream
+!output_files/*.sof
+!output_files/*.pof
+
+# ============================================
+# ESP32 - Arduino/PlatformIO
+# ============================================
+.pio/
+.vscode/
+.pioenvs/
+.piolibdeps/
+*.bin
+*.elf
+*.map
+
+# ============================================
+# Python - Scripts
+# ============================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ============================================
+# System Files
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+*.swp
+*.swo
+
+# ============================================
+# ROM Files (do not commit copyrighted ROMs)
+# ============================================
+roms/**/*.rom
+roms/**/*.bin
+!roms/README.md
+
+# ============================================
+# Temporary and Log Files
+# ============================================
+*.log
+*.tmp
+*.temp
+
+# ============================================
+# IDE Specific
+# ============================================
+.idea/
+*.iml
+.vscode/settings.json
+
+# ============================================
+# Keep Important Files
+# ============================================
+!*.v
+!*.sv
+!*.vhd
+!*.qpf
+!*.qsf
+!*.sdc
+!*.qip
+!*.tcl
+!*.ino
+!*.cpp
+!*.h
+!*.py
+!*.sh
+!*.md
+!*.html
+!*.css
+!*.js
