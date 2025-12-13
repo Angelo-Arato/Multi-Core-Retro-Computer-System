@@ -1,4 +1,4 @@
-  # MULTI-CORE RETRO COMPUTER SYSTEM
+# MULTI-CORE RETRO COMPUTER SYSTEM
 
 ## Architettura Ibrida FPGA/MCU per Emulazione Retro Computer
 
@@ -28,46 +28,46 @@ Sistema multi-core di emulazione retro computer su FPGA DE10-Lite (Intel MAX 10)
 ## Architettura del Sistema
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        ESP32-DevKitC                            │
+┌────────────────────────────────────────────────────────────────┐
+│                        ESP32-DevKitC                           │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐        │
 │  │ WiFi/Web │  │ SD Card  │  │   TFT    │  │  Serial  │        │
 │  │  Server  │  │  Reader  │  │ Display  │  │ Console  │        │
 │  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘        │
 │       └─────────────┴─────────────┴─────────────┘              │
-│                           │                                     │
-│                      [UART 115200]                              │
-└───────────────────────────┼─────────────────────────────────────┘
+│                           │                                    │
+│                      [UART 115200]                             │
+└───────────────────────────┼────────────────────────────────────┘
                             │
-┌───────────────────────────┼─────────────────────────────────────┐
-│  DE10-Lite FPGA           │                                     │
+┌───────────────────────────┼────────────────────────────────────┐
+│  DE10-Lite FPGA           │                                    │
 │  ┌────────────────────────┴────────────────────────────────┐   │
-│  │                  UART Controller                         │   │
-│  │              ┌──────────────────┐                        │   │
-│  │              │  Command Parser  │                        │   │
-│  │              └────────┬─────────┘                        │   │
-│  │                       │                                  │   │
+│  │                  UART Controller                        │   │
+│  │              ┌──────────────────┐                       │   │
+│  │              │  Command Parser  │                       │   │
+│  │              └────────┬─────────┘                       │   │
+│  │                       │                                 │   │
 │  │  ┌────────┬───────────┼───────────┬────────┐            │   │
 │  │  │        │           │           │        │            │   │
 │  │  ▼        ▼           ▼           ▼        ▼            │   │
-│  │ ┌──┐    ┌────┐     ┌──────┐    ┌─────┐  ┌───────┐      │   │
-│  │ │C64│   │VIC20│    │Spectrum│  │Apple1│ │ROM    │      │   │
-│  │ │   │   │    │     │       │   │     │  │Loader │      │   │
-│  │ └──┘    └────┘     └──────┘    └─────┘  └───────┘      │   │
-│  │   │        │           │           │         │          │   │
-│  │   └────────┴───────────┴───────────┴─────────┘          │   │
-│  │                       │                                  │   │
-│  │              ┌────────┴─────────┐                        │   │
-│  │              │  Shared RAM/ROM  │                        │   │
-│  │              │      Pool        │                        │   │
-│  │              └──────────────────┘                        │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                           │                                     │
-│              ┌────────────┴─────────────┐                       │
-│              │      VGA Controller      │                       │
-│              │    (640x480 @ 60Hz)      │                       │
-│              └──────────────────────────┘                       │
-└─────────────────────────────────────────────────────────────────┘
+│  │ ┌───┐  ┌─────┐   ┌────────┐   ┌──────┐ ┌───────┐        │   │
+│  │ │C64│  │VIC20│   │Spectrum│   │Apple1│ │ROM    │        │   │
+│  │ │   │  │     │   │        │   │      │ │Loader │        │   │
+│  │ └───┘  └─────┘   └────────┘   └──────┘ └───────┘        │   │
+│  │   │        │          │           │        │            │   │
+│  │   └────────┴──────────┴───────────┴────────┘            │   │
+│  │                       │                                 │   │
+│  │              ┌────────┴─────────┐                       │   │
+│  │              │  Shared RAM/ROM  │                       │   │
+│  │              │      Pool        │                       │   │
+│  │              └──────────────────┘                       │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                           │                                    │
+│              ┌────────────┴─────────────┐                      │
+│              │      VGA Controller      │                      │
+│              │    (640x480 @ 60Hz)      │                      │
+│              └──────────────────────────┘                      │
+└────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -326,23 +326,20 @@ L'ESP32 espone una WebApp per controllo remoto via WiFi con due modalità operat
 ### Configurazione WiFi Default
 
 ```
-SSID:     RetroPC_XXXXXX    (XXXXXX = ultimi 6 caratteri MAC)
+SSID:     RetroPC_XXXXXX    (XXXXXX = ultimi 6 caratteri MAC in esadecimale)
 Password: retro2025
 IP:       192.168.4.1       (modalità Access Point)
 ```
 
 ### Credenziali Modificabili nel Firmware
 
-Nel file `RetroPC_ESP32.ino`, cerca la sezione configurazione:
+Nel file `RetroPC_ESP32_v4.ino`, cerca la sezione configurazione:
 
 ```cpp
-// ==================== CONFIGURAZIONE WIFI ====================
+// ===== WiFi Configuration =====
 #define AP_SSID_PREFIX "RetroPC_"        // Prefisso nome Access Point
 #define AP_PASSWORD    "retro2025"       // Password Access Point
-
-// Credenziali rete WiFi esistente (opzionale)
-const char* WIFI_SSID = "";              // Lascia vuoto per usare solo AP
-const char* WIFI_PASS = "";              // Oppure inserisci la tua rete
+#define WIFI_CONNECT_TIMEOUT 15000       // Timeout connessione (ms)
 ```
 
 ### Modalità di Funzionamento
@@ -352,10 +349,11 @@ const char* WIFI_PASS = "";              // Oppure inserisci la tua rete
 Se non è configurata una rete WiFi, l'ESP32 crea un proprio hotspot:
 
 1. **Accendi il sistema** - L'ESP32 crea l'Access Point
-2. **Cerca la rete WiFi** `RetroPC_XXXXXX` sul tuo dispositivo
+2. **Cerca la rete WiFi** `RetroPC_XXXXXX` sul tuo dispositivo (es: `RetroPC_A1B2C3`)
 3. **Connettiti** con password `retro2025`
 4. **Apri il browser** e vai su `http://192.168.4.1`
 5. **Usa la WebApp** per controllare il sistema
+6. **Configura WiFi** andando su `http://192.168.4.1/wifi`
 
 #### 2. Modalità Client (Connessione a Rete Esistente)
 
