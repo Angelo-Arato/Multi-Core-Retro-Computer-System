@@ -1,4 +1,4 @@
-# MULTI-CORE RETRO COMPUTER SYSTEM
+  # MULTI-CORE RETRO COMPUTER SYSTEM
 
 ## Architettura Ibrida FPGA/MCU per Emulazione Retro Computer
 
@@ -15,13 +15,13 @@ Sistema multi-core di emulazione retro computer su FPGA DE10-Lite (Intel MAX 10)
 
 ### Sistemi Supportati
 
-| Core | Sistema         | CPU  | RAM  | ROM  | Anno |
-|------|-----------------|------|------|------|------|
-| 0    | Test Pattern    |  -   |   -  |   -  |   -  |
-| 1    | Commodore 64    | 6510 | 64KB | 20KB | 1982 |
-| 2    | ZX Spectrum 48K | Z80  | 48KB | 16KB | 1982 |
-| 3    | VIC-20          | 6502 | 8KB  | 20KB | 1980 |
-| 4    | Apple I         | 6502 | 2KB  | 256B | 1976 |
+| Core | Sistema | CPU | RAM | ROM | Anno |
+|------|---------|-----|-----|-----|------|
+| 0 | Test Pattern | - | - | - | - |
+| 1 | Commodore 64 | 6510 | 64KB | 20KB | 1982 |
+| 2 | ZX Spectrum 48K | Z80 | 48KB | 16KB | 1982 |
+| 3 | VIC-20 | 6502 | 8KB | 20KB | 1980 |
+| 4 | Apple I | 6502 | 2KB | 256B | 1976 |
 
 ---
 
@@ -30,44 +30,44 @@ Sistema multi-core di emulazione retro computer su FPGA DE10-Lite (Intel MAX 10)
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        ESP32-DevKitC                            │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐         │
-│  │ WiFi/Web │  │ SD Card  │  │   TFT    │  │  Serial  │         │
-│  │  Server  │  │  Reader  │  │ Display  │  │ Console  │         │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘         │
-│       └─────────────┴─────────────┴─────────────┘               │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐        │
+│  │ WiFi/Web │  │ SD Card  │  │   TFT    │  │  Serial  │        │
+│  │  Server  │  │  Reader  │  │ Display  │  │ Console  │        │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘        │
+│       └─────────────┴─────────────┴─────────────┘              │
 │                           │                                     │
 │                      [UART 115200]                              │
 └───────────────────────────┼─────────────────────────────────────┘
                             │
-┌───────────────────────────┼────────────────────────────────────┐
-│  DE10-Lite FPGA           │                                    │
+┌───────────────────────────┼─────────────────────────────────────┐
+│  DE10-Lite FPGA           │                                     │
 │  ┌────────────────────────┴────────────────────────────────┐   │
-│  │                  UART Controller                        │   │
-│  │              ┌──────────────────┐                       │   │
-│  │              │  Command Parser  │                       │   │
-│  │              └────────┬─────────┘                       │   │
-│  │                       │                                 │   │
+│  │                  UART Controller                         │   │
+│  │              ┌──────────────────┐                        │   │
+│  │              │  Command Parser  │                        │   │
+│  │              └────────┬─────────┘                        │   │
+│  │                       │                                  │   │
 │  │  ┌────────┬───────────┼───────────┬────────┐            │   │
 │  │  │        │           │           │        │            │   │
 │  │  ▼        ▼           ▼           ▼        ▼            │   │
-│  │ ┌───┐   ┌─────┐   ┌────────┐   ┌──────┐  ┌───────┐      │   │
-│  │ │C64│   │VIC20│   │Spectrum│   │Apple1│  │ROM    │      │   │
-│  │ │   │   │     │   │        │   │      │  │Loader │      │   │
-│  │ └───┘   └─────┘   └────────┘   └──────┘  └───────┘      │   │
+│  │ ┌──┐    ┌────┐     ┌──────┐    ┌─────┐  ┌───────┐      │   │
+│  │ │C64│   │VIC20│    │Spectrum│  │Apple1│ │ROM    │      │   │
+│  │ │   │   │    │     │       │   │     │  │Loader │      │   │
+│  │ └──┘    └────┘     └──────┘    └─────┘  └───────┘      │   │
 │  │   │        │           │           │         │          │   │
 │  │   └────────┴───────────┴───────────┴─────────┘          │   │
-│  │                       │                                 │   │
-│  │              ┌────────┴─────────┐                       │   │
-│  │              │  Shared RAM/ROM  │                       │   │
-│  │              │      Pool        │                       │   │
-│  │              └──────────────────┘                       │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                           │                                    │
-│              ┌────────────┴─────────────┐                      │
-│              │      VGA Controller      │                      │
-│              │    (640x480 @ 60Hz)      │                      │
-│              └──────────────────────────┘                      │
-└────────────────────────────────────────────────────────────────┘
+│  │                       │                                  │   │
+│  │              ┌────────┴─────────┐                        │   │
+│  │              │  Shared RAM/ROM  │                        │   │
+│  │              │      Pool        │                        │   │
+│  │              └──────────────────┘                        │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│                           │                                     │
+│              ┌────────────┴─────────────┐                       │
+│              │      VGA Controller      │                       │
+│              │    (640x480 @ 60Hz)      │                       │
+│              └──────────────────────────┘                       │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -91,32 +91,51 @@ M9K Disponibili:       96 (per espansioni future)
 ### Directory Principale
 
 ```
-/
-├── rtl/                          # Sorgenti Verilog/VHDL
-│   ├── retro_multicore_shared.v  # Top-level module
-│   ├── c64_personality.v         # Core Commodore 64
-│   ├── vic20_personality.v       # Core VIC-20
-│   ├── spectrum_personality.v    # Core ZX Spectrum
-│   ├── apple1_personality.v      # Core Apple I
-│   ├── uart_controller.v         # Controller UART
-│   ├── command_parser.v          # Parser comandi
-│   ├── rom_loader.v              # Caricatore ROM dinamico
-│   └── t65/                      # Soft-core 6502
-│       ├── T65.vhd
-│       ├── T65_ALU.vhd
-│       ├── T65_MCode.vhd
-│       ├── T65_Pack.vhd
-│       └── T65_wrapper.v
+Multi-Core-Retro-Computer-System/
 │
-├── esp32/                        # Firmware ESP32
-│   ├── RetroPC_ESP32_v9.ino      # Firmware principale
-│   └── icons.h                   # Icone
+├── README.md                         # Documentazione progetto
+├── retro_multicore_cpu.qpf           # File progetto Quartus
+├── retro_multicore_cpu.qsf           # Settings Quartus
 │
-├── quartus/                      # Progetto Quartus
-│   ├── retro_multicore_cpu.qpf   # File progetto
-│   └── retro_multicore_cpu.qsf   # Settings
+├── rtl/                              # Sorgenti Verilog/VHDL
+│   ├── retro_multicore_top_cpu.v     # Top-level module
+│   ├── c64_complete.v                # Core Commodore 64
+│   ├── vic20_complete.v              # Core VIC-20
+│   ├── zxspectrum_complete.v         # Core ZX Spectrum
+│   ├── apple1_complete.v             # Core Apple I
+│   ├── apple1_rom.v                  # Woz Monitor ROM
+│   ├── apple1_ram.v                  # RAM Apple I
+│   ├── apple1_font_rom.v             # Font ROM Apple I
+│   ├── zx_memory.v                   # Memoria ZX Spectrum
+│   ├── shared_ram.v                  # RAM condivisa
+│   ├── rom_chargen.v                 # Character generator ROM
+│   ├── rom_loader.v                  # Caricatore ROM da UART
+│   ├── load_handler.v                # Gestore caricamento programmi
+│   ├── uart_controller.v             # Controller UART
+│   ├── command_parser.v              # Parser comandi
+│   ├── ps2_keyboard.v                # Controller tastiera PS/2
+│   ├── test_pattern_gen.v            # Generatore test pattern
+│   │
+│   ├── t65/                          # Soft-core 6502
+│   │   ├── T65.vhd                   # Core principale
+│   │   ├── T65_ALU.vhd               # Unità aritmetico-logica
+│   │   ├── T65_MCode.vhd             # Microcode
+│   │   ├── T65_Pack.vhd              # Package definizioni
+│   │   └── T65_wrapper.v             # Wrapper Verilog
+│   │
+│   └── t80/                          # Soft-core Z80
+│       ├── T80.vhd                   # Core principale
+│       ├── T80a.vhd                  # Versione alternativa
+│       ├── T80_ALU.vhd               # Unità aritmetico-logica
+│       ├── T80_MCode.vhd             # Microcode
+│       ├── T80_Pack.vhd              # Package definizioni
+│       ├── T80_Reg.vhd               # File registri
+│       └── T80_wrapper.v             # Wrapper Verilog
 │
-└── README.md
+└── esp32/                            # Firmware ESP32
+    └── RetroPC_ESP32_v4/
+        ├── RetroPC_ESP32_v4.ino      # Firmware principale
+        └── icons.h                   # Icone per display TFT
 ```
 
 ### Struttura SD Card
@@ -124,22 +143,17 @@ M9K Disponibili:       96 (per espansioni future)
 ```
 /sd
 ├── /roms
-│   ├── /c64
-│   ├── /spectrum
-│   ├── /vic20
-│   └── /apple1
-│       └── (Woz Monitor integrato - nessuna ROM esterna necessaria)
+│   ├── /c64/                         # ROM Commodore 64
+│   ├── /spectrum/                    # ROM ZX Spectrum
+│   ├── /vic20/                       # ROM VIC-20
+│   └── /apple1/                      # (Woz Monitor integrato)
 │
 ├── /progs
-│   ├── /c64
-│   │   └── *.prg
-│   ├── /vic20
-│   │   └── *.prg
-│   └── /spectrum
-│       └── *.z80
+│   ├── /c64/                         # Programmi .prg C64
+│   ├── /vic20/                       # Programmi .prg VIC-20
+│   └── /spectrum/                    # Programmi .z80 Spectrum
 │
-└── /floppy
-    └── *.d64
+└── /floppy/                          # Immagini disco .d64
 ```
 
 ---
@@ -148,11 +162,11 @@ M9K Disponibili:       96 (per espansioni future)
 
 ### ESP32 ↔ FPGA (UART)
 
-| ESP32       | FPGA (GPIO)       | Funzione     |
-|-------------|-------------------|--------------|
+| ESP32 | FPGA (GPIO) | Funzione |
+|-------|-------------|----------|
 | GPIO26 (TX) | GPIO[1] / PIN_W10 | ESP32 → FPGA |
 | GPIO27 (RX) | GPIO[0] / PIN_V10 | FPGA → ESP32 |
-| GND         | GND               | Massa comune |
+| GND | GND | Massa comune |
 
 ---
 
@@ -160,13 +174,13 @@ M9K Disponibili:       96 (per espansioni future)
 
 ### Selezione Sistema
 
-| Comando | Sistema.        |
-|---------|-----------------|
-| `0`     | Test Pattern    |
-| `1`.    | Commodore 64    |
-| `2`     | ZX Spectrum 48K |
-| `3`     | VIC-20          |
-| `4`     | Apple I         |
+| Comando | Sistema |
+|---------|---------|
+| `0` | Test Pattern |
+| `1` | Commodore 64 |
+| `2` | ZX Spectrum 48K |
+| `3` | VIC-20 |
+| `4` | Apple I |
 
 ### Comandi Generali
 
@@ -305,19 +319,183 @@ Le ROM vengono caricate nell'ordine specificato:
 
 ---
 
-## WebApp
+## WebApp e Configurazione WiFi
 
-L'ESP32 espone una WebApp per controllo remoto via WiFi.
+L'ESP32 espone una WebApp per controllo remoto via WiFi con due modalità operative.
 
-### Accesso
+### Configurazione WiFi Default
 
-1. ESP32 crea AP WiFi o si connette a rete esistente
-2. Accedere all'IP mostrato su Serial Monitor
-3. Utilizzare interfaccia web per:
-   - Selezione core
-   - Invio comandi tastiera
-   - Visualizzazione stato
-   - Reset sistema
+```
+SSID:     RetroPC_XXXXXX    (XXXXXX = ultimi 6 caratteri MAC)
+Password: retro2025
+IP:       192.168.4.1       (modalità Access Point)
+```
+
+### Credenziali Modificabili nel Firmware
+
+Nel file `RetroPC_ESP32.ino`, cerca la sezione configurazione:
+
+```cpp
+// ==================== CONFIGURAZIONE WIFI ====================
+#define AP_SSID_PREFIX "RetroPC_"        // Prefisso nome Access Point
+#define AP_PASSWORD    "retro2025"       // Password Access Point
+
+// Credenziali rete WiFi esistente (opzionale)
+const char* WIFI_SSID = "";              // Lascia vuoto per usare solo AP
+const char* WIFI_PASS = "";              // Oppure inserisci la tua rete
+```
+
+### Modalità di Funzionamento
+
+#### 1. Modalità Access Point (Default)
+
+Se non è configurata una rete WiFi, l'ESP32 crea un proprio hotspot:
+
+1. **Accendi il sistema** - L'ESP32 crea l'Access Point
+2. **Cerca la rete WiFi** `RetroPC_XXXXXX` sul tuo dispositivo
+3. **Connettiti** con password `retro2025`
+4. **Apri il browser** e vai su `http://192.168.4.1`
+5. **Usa la WebApp** per controllare il sistema
+
+#### 2. Modalità Client (Connessione a Rete Esistente)
+
+Se hai configurato una rete WiFi nel firmware:
+
+1. **L'ESP32 si connette** alla rete configurata
+2. **L'IP viene assegnato** dal router (DHCP)
+3. **Controlla il Serial Monitor** per vedere l'IP assegnato
+4. **Apri il browser** e vai su `http://[IP_ASSEGNATO]`
+
+### Prima Configurazione WiFi
+
+Al primo avvio o dopo un reset:
+
+```
+1. Connettiti al WiFi "RetroPC_XXXXXX"
+2. Password: retro2025
+3. Apri http://192.168.4.1
+4. Clicca "Configura WiFi"
+5. Seleziona la tua rete domestica
+6. Inserisci la password
+7. Clicca "Salva e Connetti"
+8. L'ESP32 si riavvia e si connette alla nuova rete
+```
+
+### Interfaccia WebApp
+
+#### Pagina Principale
+
+```
+┌─────────────────────────────────────┐
+│    🎮 RETRO MULTI-CORE SYSTEM       │
+├─────────────────────────────────────┤
+│  Core Attivo: [C64 ▼]               │
+│                                     │
+│  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐   │
+│  │Test │ │ C64 │ │Spec │ │VIC20│   │
+│  └─────┘ └─────┘ └─────┘ └─────┘   │
+│  ┌─────┐                            │
+│  │APL 1│                            │
+│  └─────┘                            │
+├─────────────────────────────────────┤
+│  Tastiera:                          │
+│  ┌─────────────────────────────┐   │
+│  │ PRINT "HELLO WORLD"        │   │
+│  └─────────────────────────────┘   │
+│  [  SEND  ]  [ RESET ]  [REFRESH]  │
+├─────────────────────────────────────┤
+│  Status: ● Connesso | Core: C64    │
+│  IP: 192.168.1.105 | Uptime: 1h    │
+└─────────────────────────────────────┘
+```
+
+### Endpoint API REST
+
+| Metodo | Endpoint | Descrizione |
+|--------|----------|-------------|
+| GET | `/` | Pagina principale WebApp |
+| GET | `/api/status` | Status JSON del sistema |
+| POST | `/api/core` | Cambio core (body: `{"core": 1}`) |
+| POST | `/api/keyboard` | Invio testo (body: `{"text": "..."}`) |
+| POST | `/api/reset` | Reset core corrente |
+| GET | `/api/ping` | Test connessione FPGA |
+
+#### Esempio Response `/api/status`
+
+```json
+{
+  "core": 1,
+  "core_name": "C64",
+  "uptime": 3600,
+  "fpga_connected": true,
+  "sd_card": true,
+  "wifi_rssi": -45,
+  "ip": "192.168.1.105",
+  "free_heap": 120000
+}
+```
+
+### Configurazione Avanzata
+
+#### Cambio Password Access Point
+
+Modifica nel firmware:
+```cpp
+#define AP_PASSWORD "tua_nuova_password"
+```
+
+#### IP Statico (opzionale)
+
+Per assegnare un IP fisso quando connesso a una rete:
+```cpp
+IPAddress local_IP(192, 168, 1, 200);
+IPAddress gateway(192, 168, 1, 1);
+IPAddress subnet(255, 255, 255, 0);
+WiFi.config(local_IP, gateway, subnet);
+```
+
+#### Disabilitare Access Point
+
+Per usare solo la connessione a rete esistente:
+```cpp
+#define DISABLE_AP_MODE true
+```
+
+### Reset Configurazione WiFi
+
+Se hai problemi di connessione:
+
+1. **Via Serial Monitor:** Invia il comando `wifi_reset`
+2. **Via Hardware:** Tieni premuto il pulsante BOOT per 10 secondi all'avvio
+3. **Via WebApp:** Pagina Impostazioni → "Reset WiFi"
+
+L'ESP32 cancellerà le credenziali salvate e tornerà in modalità Access Point.
+
+### LED Indicatori WiFi
+
+| Stato LED | Significato |
+|-----------|-------------|
+| Lampeggio veloce (5Hz) | Ricerca rete WiFi |
+| Lampeggio lento (1Hz) | Modalità Access Point attiva |
+| 3 lampeggi | Connessione riuscita |
+| Fisso | Errore connessione |
+
+### Troubleshooting WiFi
+
+#### Non trovo la rete "RetroPC_..."
+- Verifica che l'ESP32 sia alimentato
+- Attendi 10 secondi dopo l'accensione
+- Riavvia l'ESP32
+
+#### La WebApp non si carica
+- Verifica di essere connesso alla rete corretta
+- Prova `http://192.168.4.1` (non https)
+- Disabilita VPN se attiva
+
+#### Connessione instabile
+- Avvicina l'ESP32 al router
+- Verifica che la rete sia 2.4GHz (non 5GHz)
+- Controlla RSSI in `/api/status`
 
 ---
 
