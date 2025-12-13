@@ -110,9 +110,7 @@ M9K Disponibili:       96 (per espansioni future)
 │
 ├── esp32/                        # Firmware ESP32
 │   ├── RetroPC_ESP32_v9.ino      # Firmware principale
-│   └── data/                     # WebApp (SPIFFS)
-│       ├── index.html
-│       └── style.css
+│   └── icons.h                   # Icone
 │
 ├── quartus/                      # Progetto Quartus
 │   ├── retro_multicore_cpu.qpf   # File progetto
@@ -127,15 +125,8 @@ M9K Disponibili:       96 (per espansioni future)
 /sd
 ├── /roms
 │   ├── /c64
-│   │   ├── basic.901226-01.bin
-│   │   ├── kernal.901227-03.bin
-│   │   └── characters.901225-01.bin
 │   ├── /spectrum
-│   │   └── opense.rom
 │   ├── /vic20
-│   │   ├── characters.901460-03.bin
-│   │   ├── basic.901486-01.bin
-│   │   └── kernal.901486-07.bin
 │   └── /apple1
 │       └── (Woz Monitor integrato - nessuna ROM esterna necessaria)
 │
