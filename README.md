@@ -65,7 +65,8 @@ Sistema multi-core di emulazione retro computer su FPGA DE10-Lite (Intel MAX 10)
 │                           │                                    │
 │              ┌────────────┴─────────────┐                      │
 │              │      VGA Controller      │                      │
-│              │    (640x480 @ 60Hz)      │                      │
+│              │    (640x480 @60Hz)       │                      │
+│              │(800x600 @72Hz con SW8-ON)│                      │
 │              └──────────────────────────┘                      │
 └────────────────────────────────────────────────────────────────┘
 ```
@@ -74,14 +75,12 @@ Sistema multi-core di emulazione retro computer su FPGA DE10-Lite (Intel MAX 10)
 
 ## Utilizzo Risorse FPGA
 
-### Architettura Condivisa (v8/v9)
+### Architettura Condivisa
 
 ```
 Device: 10M50DAF484C7G (MAX 10)
-Logic Elements:    ~35,000 / 49,760 (70%)
-Memory Bits:      ~800,000 / 1,677,312 (48%)
-M9K Blocks:            86 / 182 (47%)
-M9K Disponibili:       96 (per espansioni future)
+Logic Elements:    ~45,000 / 49,760 (90%)
+Memory Bits:      ~1,430,000 / 1,677,312 (85%)
 ```
 
 ---
@@ -255,11 +254,11 @@ Le ROM vengono caricate nell'ordine specificato:
 
 | Ordine | File | Destinazione |
 |--------|------|--------------|
-| 1 | `characters.901460-03.bin` | $8000 (4KB) |
-| 2 | `basic.901486-01.bin` | $C000 (8KB) |
-| 3 | `kernal.901486-07.bin` | $E000 (8KB) |
+| 1 | `basic.bin` | $C000 (8KB) |
+| 2 | `kernal.bin` | $E000 (8KB) |
+| 3 | `characters.bin` | $8000 (4KB) |
 
-**IMPORTANTE:** L'ordine è fondamentale! CHAR → BASIC → KERNAL
+**IMPORTANTE:** L'ordine è fondamentale! BASIC → KERNAL → CHAR
 
 ---
 
@@ -274,10 +273,11 @@ Le ROM vengono caricate nell'ordine specificato:
 ### Arduino IDE (ESP32)
 
 1. Installare board ESP32 (Espressif Systems)
-2. Aprire `esp32/RetroPC_ESP32_v9.ino`
+2. Aprire `esp32/RetroPC_ESP32_v4.ino`
 3. Selezionare board "ESP32 Dev Module"
-4. Impostare Upload Speed: 921600
-5. Upload
+4. Impostare Upload Speed: 460800
+5. Impostare (No OTA 2MB/2MB)
+6. Upload
 
 ### Librerie ESP32 Richieste
 
@@ -501,7 +501,7 @@ L'ESP32 cancellerà le credenziali salvate e tornerà in modalità Access Point.
 
 ### VIC-20 mostra pattern ripetuto
 
-- Verificare ordine ROM: CHAR, BASIC, KERNAL
+- Verificare ordine ROM: BASIC, KERNAL e CHAR
 - Verificare che le ROM siano nella cartella corretta `/roms/vic20/`
 - BASIC ROM deve essere mappata a $C000-$DFFF (non $A000)
 
@@ -607,8 +607,6 @@ PRINT "HELLO"        # Digita comando
 ---
 
 ## Possibili Espansioni Future
-
-Con 96 M9K liberi disponibili, è possibile aggiungere:
 
 - 🎮 **NES** (6502 + PPU)
 - 🕹️ **Atari 2600** (6507)
