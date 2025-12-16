@@ -429,29 +429,7 @@ Al primo avvio o dopo un reset:
 
 #### Pagina Principale
 
-```
-┌─────────────────────────────────────┐
-│    🎮 RETRO MULTI-CORE SYSTEM       │
-├─────────────────────────────────────┤
-│  Core Attivo: [C64 ▼]               │
-│                                     │
-│  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐    │
-│  │Test │ │ C64 │ │Spec │ │VIC20│    │
-│  └─────┘ └─────┘ └─────┘ └─────┘    │
-│  ┌─────┐                            │
-│  │APL 1│                            │
-│  └─────┘                            │
-├─────────────────────────────────────┤
-│  Tastiera:                          │
-│  ┌─────────────────────────────┐    │
-│  │ PRINT "HELLO WORLD"         │    │
-│  └─────────────────────────────┘    │
-│  [  SEND  ]  [ RESET ]  [REFRESH]   │
-├─────────────────────────────────────┤
-│  Status: ● Connesso | Core: C64     │
-│  IP: 192.168.1.105 | Uptime: 1h     │
-└─────────────────────────────────────┘
-```
+<img width="946" height="1038" alt="image" src="https://github.com/user-attachments/assets/2781e58f-42bc-40ed-847f-6043b9025e4c" />
 
 ### Endpoint API REST
 
