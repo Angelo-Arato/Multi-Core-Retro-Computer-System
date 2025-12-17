@@ -1,0 +1,3 @@
+QUARTUS_VERSION = "25.1"
+DATE = "2025-11-30"
+PROJECT_REVISION = "retro_multicore_cpu"

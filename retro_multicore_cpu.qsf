@@ -1,0 +1,288 @@
+# ==============================================================================
+# QUARTUS PROJECT SETTINGS - RETRO MULTICORE CON CPU 6502
+# ==============================================================================
+# Autore: Angelo Arato
+# Data: Novembre 2025
+# Versione: Con emulazione CPU completa
+# ==============================================================================
+
+# ==============================================================================
+# DEVICE
+# ==============================================================================
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M50DAF484C7G
+set_global_assignment -name TOP_LEVEL_ENTITY retro_multicore_top_cpu
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+
+# ==============================================================================
+# SOURCE FILES
+# ==============================================================================
+
+# Top Level (versione CPU)
+
+# CPU 6502 (T65 VHDL da MiSTer)
+
+# CPU Z80 (T80 VHDL)
+
+# C64 Complete (con CPU)
+
+# ZX Spectrum 48K Complete (con CPU Z80)
+
+# ROM embedded M9K (caricabili via UART)
+
+# UART e Command Parser
+
+# ROM Loader (non più usato per ROM, solo per eventuali programmi)
+
+# Test Pattern
+
+# ==============================================================================
+# PIN ASSIGNMENTS - DE10-LITE
+# ==============================================================================
+
+# Clock 50 MHz
+set_location_assignment PIN_P11 -to MAX10_CLK1_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MAX10_CLK1_50
+
+# Keys (active low)
+set_location_assignment PIN_B8 -to KEY[0]
+set_location_assignment PIN_A7 -to KEY[1]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to KEY[*]
+
+# Switches
+set_location_assignment PIN_C10 -to SW[0]
+set_location_assignment PIN_C11 -to SW[1]
+set_location_assignment PIN_D12 -to SW[2]
+set_location_assignment PIN_C12 -to SW[3]
+set_location_assignment PIN_A12 -to SW[4]
+set_location_assignment PIN_B12 -to SW[5]
+set_location_assignment PIN_A13 -to SW[6]
+set_location_assignment PIN_A14 -to SW[7]
+set_location_assignment PIN_B14 -to SW[8]
+set_location_assignment PIN_F15 -to SW[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[*]
+
+# LEDs
+set_location_assignment PIN_A8 -to LEDR[0]
+set_location_assignment PIN_A9 -to LEDR[1]
+set_location_assignment PIN_A10 -to LEDR[2]
+set_location_assignment PIN_B10 -to LEDR[3]
+set_location_assignment PIN_D13 -to LEDR[4]
+set_location_assignment PIN_C13 -to LEDR[5]
+set_location_assignment PIN_E14 -to LEDR[6]
+set_location_assignment PIN_D14 -to LEDR[7]
+set_location_assignment PIN_A11 -to LEDR[8]
+set_location_assignment PIN_B11 -to LEDR[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[*]
+
+# VGA Red
+set_location_assignment PIN_AA1 -to VGA_R[0]
+set_location_assignment PIN_V1 -to VGA_R[1]
+set_location_assignment PIN_Y2 -to VGA_R[2]
+set_location_assignment PIN_Y1 -to VGA_R[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[*]
+
+# VGA Green
+set_location_assignment PIN_W1 -to VGA_G[0]
+set_location_assignment PIN_T2 -to VGA_G[1]
+set_location_assignment PIN_R2 -to VGA_G[2]
+set_location_assignment PIN_R1 -to VGA_G[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[*]
+
+# VGA Blue
+set_location_assignment PIN_P1 -to VGA_B[0]
+set_location_assignment PIN_T1 -to VGA_B[1]
+set_location_assignment PIN_P4 -to VGA_B[2]
+set_location_assignment PIN_N2 -to VGA_B[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[*]
+
+# VGA Sync
+set_location_assignment PIN_N3 -to VGA_HS
+set_location_assignment PIN_N1 -to VGA_VS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_HS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_VS
+
+# GPIO (UART to ESP32 + PS/2 Keyboard)
+# GPIO[0]: UART TX o PS2_CLK (con pull-up 10K a 3.3V)
+# GPIO[1]: UART RX o PS2_DATA (con pull-up 10K a 3.3V)
+set_location_assignment PIN_V10 -to GPIO[0]
+set_location_assignment PIN_W10 -to GPIO[1]
+# GPIO[2] e GPIO[3] usati per PS/2 - vedi sotto
+# set_location_assignment PIN_V9 -to GPIO[2]
+# set_location_assignment PIN_W9 -to GPIO[3]
+set_location_assignment PIN_V8 -to GPIO[4]
+set_location_assignment PIN_W8 -to GPIO[5]
+set_location_assignment PIN_V7 -to GPIO[6]
+set_location_assignment PIN_W7 -to GPIO[7]
+set_location_assignment PIN_W6 -to GPIO[8]
+set_location_assignment PIN_V5 -to GPIO[9]
+set_location_assignment PIN_W5 -to GPIO[10]
+set_location_assignment PIN_AA15 -to GPIO[11]
+set_location_assignment PIN_AA14 -to GPIO[12]
+set_location_assignment PIN_W13 -to GPIO[13]
+set_location_assignment PIN_W12 -to GPIO[14]
+set_location_assignment PIN_AB13 -to GPIO[15]
+set_location_assignment PIN_AB12 -to GPIO[16]
+set_location_assignment PIN_Y11 -to GPIO[17]
+set_location_assignment PIN_AB11 -to GPIO[18]
+set_location_assignment PIN_W11 -to GPIO[19]
+set_location_assignment PIN_AB10 -to GPIO[20]
+set_location_assignment PIN_AA10 -to GPIO[21]
+set_location_assignment PIN_AA9 -to GPIO[22]
+set_location_assignment PIN_Y8 -to GPIO[23]
+set_location_assignment PIN_AA8 -to GPIO[24]
+set_location_assignment PIN_Y7 -to GPIO[25]
+set_location_assignment PIN_AA7 -to GPIO[26]
+set_location_assignment PIN_Y6 -to GPIO[27]
+set_location_assignment PIN_AA6 -to GPIO[28]
+set_location_assignment PIN_Y5 -to GPIO[29]
+set_location_assignment PIN_AA5 -to GPIO[30]
+set_location_assignment PIN_Y4 -to GPIO[31]
+set_location_assignment PIN_AB3 -to GPIO[32]
+set_location_assignment PIN_Y3 -to GPIO[33]
+set_location_assignment PIN_AB2 -to GPIO[34]
+set_location_assignment PIN_AA2 -to GPIO[35]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[*]
+
+# PS/2 Keyboard (GPIO[2] e GPIO[3] - con pull-up 10K a 3.3V)
+set_location_assignment PIN_V9 -to PS2_CLK
+set_location_assignment PIN_W9 -to PS2_DATA
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_CLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_DATA
+
+# ==============================================================================
+# 7-SEGMENT DISPLAYS (Active Low)
+# ==============================================================================
+
+# HEX0 (rightmost digit)
+set_location_assignment PIN_C14 -to HEX0[0]
+set_location_assignment PIN_E15 -to HEX0[1]
+set_location_assignment PIN_C15 -to HEX0[2]
+set_location_assignment PIN_C16 -to HEX0[3]
+set_location_assignment PIN_E16 -to HEX0[4]
+set_location_assignment PIN_D17 -to HEX0[5]
+set_location_assignment PIN_C17 -to HEX0[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[*]
+
+# HEX1
+set_location_assignment PIN_C18 -to HEX1[0]
+set_location_assignment PIN_D18 -to HEX1[1]
+set_location_assignment PIN_E18 -to HEX1[2]
+set_location_assignment PIN_B16 -to HEX1[3]
+set_location_assignment PIN_A17 -to HEX1[4]
+set_location_assignment PIN_A18 -to HEX1[5]
+set_location_assignment PIN_B17 -to HEX1[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[*]
+
+# HEX2
+set_location_assignment PIN_B20 -to HEX2[0]
+set_location_assignment PIN_A20 -to HEX2[1]
+set_location_assignment PIN_B19 -to HEX2[2]
+set_location_assignment PIN_A21 -to HEX2[3]
+set_location_assignment PIN_B21 -to HEX2[4]
+set_location_assignment PIN_C22 -to HEX2[5]
+set_location_assignment PIN_B22 -to HEX2[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[*]
+
+# HEX3
+set_location_assignment PIN_F21 -to HEX3[0]
+set_location_assignment PIN_E22 -to HEX3[1]
+set_location_assignment PIN_E21 -to HEX3[2]
+set_location_assignment PIN_C19 -to HEX3[3]
+set_location_assignment PIN_C20 -to HEX3[4]
+set_location_assignment PIN_D19 -to HEX3[5]
+set_location_assignment PIN_E17 -to HEX3[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[*]
+
+# HEX4
+set_location_assignment PIN_F18 -to HEX4[0]
+set_location_assignment PIN_E20 -to HEX4[1]
+set_location_assignment PIN_E19 -to HEX4[2]
+set_location_assignment PIN_J18 -to HEX4[3]
+set_location_assignment PIN_H19 -to HEX4[4]
+set_location_assignment PIN_F19 -to HEX4[5]
+set_location_assignment PIN_F20 -to HEX4[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[*]
+
+# HEX5 (leftmost digit)
+set_location_assignment PIN_J20 -to HEX5[0]
+set_location_assignment PIN_K20 -to HEX5[1]
+set_location_assignment PIN_L18 -to HEX5[2]
+set_location_assignment PIN_N18 -to HEX5[3]
+set_location_assignment PIN_M20 -to HEX5[4]
+set_location_assignment PIN_N19 -to HEX5[5]
+set_location_assignment PIN_N20 -to HEX5[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[*]
+
+# ==============================================================================
+# COMPILATION SETTINGS
+# ==============================================================================
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"
+
+# Ottimizzazioni per risparmiare spazio
+set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE AREA"
+set_global_assignment -name ALLOW_REGISTER_RETIMING ON
+
+# Memory initialization (richiesto per initial blocks)
+set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE COMP IMAGE WITH ERAM"
+
+# VIC-20 Core (versione ULTRA-LITE - tutto integrato)
+# File seguenti NON PIU' NECESSARI - ROM/RAM integrate in vic20_complete.v
+# set_global_assignment -name VERILOG_FILE rtl/rom_basic_vic20.v
+# set_global_assignment -name VERILOG_FILE rtl/rom_kernal_vic20.v
+# set_global_assignment -name VERILOG_FILE rtl/rom_char_vic20.v
+# set_global_assignment -name VERILOG_FILE rtl/ram_vic20.v
+
+# Apple II Core
+# Apple II rimosso per limiti M9K - commentato
+# set_global_assignment -name VERILOG_FILE rtl/apple2_complete.v
+
+# Apple I Core (ROM/RAM integrate in apple1_complete.v)
+
+# PS/2 Keyboard Interface
+
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_global_assignment -name VERILOG_FILE rtl/virtual_drive.v
+set_global_assignment -name VERILOG_FILE rtl/load_handler.v
+set_global_assignment -name VERILOG_FILE rtl/retro_multicore_top_cpu.v
+set_global_assignment -name VHDL_FILE rtl/t65/T65_Pack.vhd
+set_global_assignment -name VHDL_FILE rtl/t65/T65_ALU.vhd
+set_global_assignment -name VHDL_FILE rtl/t65/T65_MCode.vhd
+set_global_assignment -name VHDL_FILE rtl/t65/T65.vhd
+set_global_assignment -name VERILOG_FILE rtl/t65/T65_wrapper.v
+set_global_assignment -name VHDL_FILE rtl/t80/T80_Pack.vhd
+set_global_assignment -name VHDL_FILE rtl/t80/T80_Reg.vhd
+set_global_assignment -name VHDL_FILE rtl/t80/T80_ALU.vhd
+set_global_assignment -name VHDL_FILE rtl/t80/T80_MCode.vhd
+set_global_assignment -name VHDL_FILE rtl/t80/T80.vhd
+set_global_assignment -name VHDL_FILE rtl/t80/T80a.vhd
+set_global_assignment -name VERILOG_FILE rtl/t80/T80_wrapper.v
+set_global_assignment -name VERILOG_FILE rtl/c64_complete.v
+set_global_assignment -name VERILOG_FILE rtl/zxspectrum_complete.v
+set_global_assignment -name VERILOG_FILE rtl/zx_memory.v
+set_global_assignment -name VERILOG_FILE rtl/shared_ram.v
+set_global_assignment -name VERILOG_FILE rtl/rom_chargen.v
+set_global_assignment -name VERILOG_FILE rtl/uart_controller.v
+set_global_assignment -name VERILOG_FILE rtl/command_parser.v
+set_global_assignment -name VERILOG_FILE rtl/rom_loader.v
+set_global_assignment -name VERILOG_FILE rtl/test_pattern_gen.v
+set_global_assignment -name VERILOG_FILE rtl/vic20_complete.v
+set_global_assignment -name VERILOG_FILE rtl/apple1_complete.v
+set_global_assignment -name VERILOG_FILE rtl/apple1_font_rom.v
+set_global_assignment -name VERILOG_FILE rtl/ps2_keyboard.v
+set_global_assignment -name SIGNALTAP_FILE stp1.stp
+set_global_assignment -name SOURCE_FILE db/retro_multicore_cpu.cmp.rdb
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
