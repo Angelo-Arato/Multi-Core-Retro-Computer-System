@@ -644,6 +644,7 @@ PRINT "HELLO"        # Digita comando
 
 Progetto per tesi universitaria.  
 Università Telematica Mercatorum - Ingegneria Gestionale
+Third-party HDL cores and trademark/ROM notices are documented in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ---
 
