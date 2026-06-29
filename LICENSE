@@ -66,3 +66,8 @@ historical, educational or compatibility-reference purposes.
 This project is not affiliated with, sponsored by, endorsed by or officially
 connected to Commodore, Apple, Sinclair, Atari or any other trademark owner,
 unless expressly stated in a written agreement.
+
+This license applies only to original project materials authored by Angelo Arato, 
+unless a file, folder or source header states otherwise. Third-party components 
+included in this repository remain subject to their own copyright notices, 
+license terms and disclaimers. See THIRD_PARTY_NOTICES.md for details.
