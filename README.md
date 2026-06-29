@@ -642,11 +642,18 @@ PRINT "HELLO"        # Digita comando
 
 ---
 
-## Licenza
-
 Progetto per tesi universitaria.  
 Università Telematica Mercatorum - Ingegneria Gestionale
-Third-party HDL cores and trademark/ROM notices are documented in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## License and Third-Party Notices
+
+This repository is an educational thesis project.
+
+Original project code authored by Angelo Arato is licensed under the repository License file, unless otherwise stated.
+
+Third-party HDL cores, ROM-related notices and trademark notices are documented in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+No proprietary ROM files, firmware images, monitor ROMs, BASIC ROMs, KERNAL ROMs or character ROMs are included. Users must obtain any required ROM files legally.
 
 ---
 
