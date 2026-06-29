@@ -12,7 +12,7 @@ This file is intended to clarify attribution. It does not replace the original l
 
 ## 1. Project Code Authored by Angelo Arato
 
-Unless otherwise stated in a specific file, folder or source header, original project materials authored by Angelo Arato are distributed under the license provided in the repository `License` file.
+Unless otherwise stated in a specific file, folder or source header, original project materials authored by Angelo Arato are distributed under the license provided in the repository LICENSE file.
 
 This includes, where original to the project:
 
