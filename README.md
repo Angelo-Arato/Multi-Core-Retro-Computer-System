@@ -102,7 +102,7 @@ Multi-Core-Retro-Computer-System/
 │   ├── vic20_complete.v              # Core VIC-20
 │   ├── zxspectrum_complete.v         # Core ZX Spectrum
 │   ├── apple1_complete.v             # Core Apple I
-│   ├── apple1_rom.v                  # Woz Monitor ROM
+│   ├── apple1_rom.v                  # Placeholder ROM, no original Woz Monitor included
 │   ├── apple1_ram.v                  # RAM Apple I
 │   ├── apple1_font_rom.v             # Font ROM Apple I
 │   ├── zx_memory.v                   # Memoria ZX Spectrum
@@ -145,7 +145,7 @@ Multi-Core-Retro-Computer-System/
 │   ├── /c64/                         # ROM Commodore 64
 │   ├── /spectrum/                    # ROM ZX Spectrum
 │   ├── /vic20/                       # ROM VIC-20
-│   └── /apple1/                      # (Woz Monitor integrato)
+│   └── /apple1/                      # User-provided legally obtained monitor/ROM, if required
 │
 ├── /progs
 │   ├── /c64/                         # Programmi .prg C64
