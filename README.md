@@ -282,6 +282,8 @@ Il sistema supporta layout **italiano** con mappatura automatica:
 | `<addr>: <bb>` | `300: A9 00` | Deposita bytes |
 | `<addr>R` | `300R` | Esegue da indirizzo |
 
+The Apple I-compatible core does not include the original Woz Monitor ROM. A placeholder ROM is provided only to allow synthesis/testing. Users must provide legally obtained monitor code if required.
+
 ### Caratteristiche
 
 - Display: 32 colonne × 16 righe
