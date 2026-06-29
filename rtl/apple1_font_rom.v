@@ -1,5 +1,7 @@
 //==============================================================================
 // APPLE I FONT ROM - Caratteri ASCII base
+// Original simple ASCII bitmap font authored by Angelo Arato.
+// Not copied from Apple, Commodore or other proprietary character ROMs.
 //==============================================================================
 module apple1_font_rom (
     input  wire       clk,
