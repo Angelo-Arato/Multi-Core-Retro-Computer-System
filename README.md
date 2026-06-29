@@ -271,7 +271,7 @@ Il sistema supporta layout **italiano** con mappatura automatica:
 
 ---
 
-## Apple I - Woz Monitor
+## Apple I-Compatible Placeholder Monitor
 
 ### Comandi
 
